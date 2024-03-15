@@ -3,10 +3,16 @@ const app = express();
 const bodyParser = require('body-parser');
 const mysql = require('mysql2');
 const path = require('path');
+const ejs = require('ejs'); // Correct 
 
 app.use(bodyParser.json());
 
 app.use(express.static('front-end Project/Back-end/19.Edit-product Page'));
+
+app.set('view engine', 'ejs');
+
+// access to css / photo file
+app.use(express.static("public"));
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
@@ -16,8 +22,20 @@ const db = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'front-end Project/Back-end/19.Edit-product Page', 'Edit-product.html'));
+    res.render('admin/products/manage_product');
 });
+
+app.get('/add-category', (req, res) => {
+    res.render('admin/category/add_category', {name:'Add'});
+});
+
+app.get('/add-product', (req, res) => {
+    res.render('admin/products/add_product', {name:'Add'});
+})
+
+app.get('/edit-product', (req, res) => {
+    res.render('admin/products/edit_product', {name:'Edit'});
+})
 
 console.log("connected to daatbase");
 

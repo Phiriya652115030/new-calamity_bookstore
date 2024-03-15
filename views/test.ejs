@@ -1,0 +1,70 @@
+<%- include('templates/head') %>
+<body>
+    <div class="container">
+        <h1>Manage Products</h1>
+        <div class="product-category">
+            <label for="category">Product Category:</label>
+            <select id="category">
+                <option value="comics">Comics</option>
+                <option value="fiction">Fiction & Literature</option>
+                <option value="languages">Languages</option>
+            </select>
+        </div>
+        <div class="ellipsis-boxes">
+            <a href="/add-product"><div class="box">Add New Product</div></a>
+            <div class="box2">
+                <div class="ellipsis">Apply</div>
+                <div class="ellipsis">Clear</div>
+            </div>
+        </div>
+        <div class="panel">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Price</th>
+                        <th>Sale Count</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example product rows -->
+                    <tr>
+                        <td>1</td>
+                        <td><img src="product1.jpg" alt="Product 1"></td>
+                        <td>Product 1</td>
+                        <td>P1</td>
+                        <td>$19.99</td>
+                        <td>100</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <!-- More product rows here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <i class="fa-solid fa-arrow-left"></i>
+            <div class="page">1</div>
+            <i class="fa-solid fa-arrow-right"></i>
+        </div>
+    </div>
+    <div class="additional-box">
+        <p>copy right @ground all rights reserved</p>
+      </div>
+</body>
+</html>
+
+
+<!-- for js DOM -->
+<script>
+    // const addButton = document.getElementsByClassName("box")[0];
+    // addButton.addEventListener("click", () => {
+    //     alert("Gello");
+    // });
+</script>
