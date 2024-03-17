@@ -43,3 +43,10 @@ app.listen(3000, () => {
     console.log('Server is running on port 3000');
   }); 
 
+
+  //all page link use wehn all page for html finished
+
+//Home start page
+app.get('/', (req, res) => {
+   res.render('user/home');
+});
