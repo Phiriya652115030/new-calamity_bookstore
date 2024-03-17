@@ -28,6 +28,11 @@ app.get('/all-category', (req, res) => {
     res.render('user/all_category');
 });
 
+//go to comics
+app.get('/comics', (req, res) => {
+    res.render('user/comics');
+});
+
 app.get('/add-category', (req, res) => {
     res.render('admin/category/add_category', {name:'Add'});
 });
