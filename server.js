@@ -7,8 +7,6 @@ const ejs = require('ejs'); // Correct
 
 app.use(bodyParser.json());
 
-app.use(express.static('front-end Project/Back-end/19.Edit-product Page'));
-
 app.set('view engine', 'ejs');
 
 // access to css / photo file
@@ -22,7 +20,7 @@ const db = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
-    res.render('admin/products/manage_product');
+    res.render('user/home');
 });
 
 app.get('/add-category', (req, res) => {
@@ -37,16 +35,19 @@ app.get('/edit-product', (req, res) => {
     res.render('admin/products/edit_product', {name:'Edit'});
 })
 
+// Set the views directory
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 console.log("connected to daatbase");
 
 app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-  }); 
-
+    console.log('Server is running on http://localhost:3000');
+  });
 
   //all page link use wehn all page for html finished
 
 //Home start page
-app.get('/', (req, res) => {
-   res.render('user/home');
-});
+
