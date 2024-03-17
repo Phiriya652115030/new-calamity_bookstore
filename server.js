@@ -23,9 +23,15 @@ app.get('/', (req, res) => {
     res.render('user/home');
 });
 
+//go to all category
+app.get('/all-category', (req, res) => {
+    res.render('user/all_category');
+});
+
 app.get('/add-category', (req, res) => {
     res.render('admin/category/add_category', {name:'Add'});
 });
+
 
 app.get('/add-product', (req, res) => {
     res.render('admin/products/add_product', {name:'Add'});
