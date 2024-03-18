@@ -110,3 +110,64 @@ ul.navbar-nav .item3 {
 }
 
 
+
+/* Content */
+.container {
+    height: 100%;
+}
+
+
+@media only screen and (max-width: 576px) {
+
+    div.content-body {
+        margin: 0 !important;
+        height: 50vh !important;
+        margin-bottom: 5vh !important;
+    }
+    
+}
+
+
+.content-header {
+    text-align: center;
+    margin: 0 10%;
+    padding-top: 6%;
+    padding-bottom: 2%;
+    font-size: 1rem;
+}
+
+div.content-body {
+    border: black solid 1px;
+    margin: 0 15%;
+    text-align: center;
+    height: 70vh;
+    overflow: scroll;
+}
+
+.content-body hr {
+    width: 90%;
+    border-top: 3px solid black;
+}
+
+.content-body div.underline-order {
+    display: flex;
+    justify-content: center;
+}
+
+/* Order Item  */
+.order-item {
+    display: flex;
+}
+
+.order-item img {
+    width: 20%;
+    height: 200px;
+    background-color: gray;
+    padding: 10px;
+    margin: 20px;
+}
+
+.order-info {
+    margin: 20px;
+    margin-left: 10%;
+}
