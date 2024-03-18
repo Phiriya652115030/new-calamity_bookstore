@@ -19,9 +19,26 @@ const db = mysql.createConnection({
     database: "fe_bookstore"
 });
 
+
+app.post('/product/add', (req, res) => {
+    const { productName, category, author, publicationDate, quantity, regularPrice, salePrice, description, imageURL } = req.body; 
+    const sql = 'INSERT INTO products (product_name, category_type, product_author, public_date, quantity, price, price_discount, description, imgurl) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'; 
+
+    db.execute(sql, [productName, category, author, publicationDate, quantity, regularPrice, salePrice, description, imageURL], (error, results) => { 
+        if (error) {
+            console.error('Error inserting into the database: ', error);
+            return res.status(500).send('Internal Server Error');
+        }
+        console.log('Inserted product into database:', results);
+        res.redirect('/'); 
+    });
+});
+
 app.get('/', (req, res) => {
     res.render('user/home');
 });
+
+
 
 //go to all category
 app.get('/all-category', (req, res) => {
@@ -32,6 +49,14 @@ app.get('/all-category', (req, res) => {
 app.get('/comics', (req, res) => {
     res.render('user/comics');
 });
+
+//go to  manage products
+app.get('/manage-product', (req, res) => {
+    res.render('admin/products/manage_product');
+});
+
+//for go to the product click the image
+// do it later
 
 app.get('/add-category', (req, res) => {
     res.render('admin/category/add_category', {name:'Add'});
