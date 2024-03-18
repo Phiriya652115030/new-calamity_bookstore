@@ -105,8 +105,61 @@ ul.navbar-nav li:visited {
     color: #000;
 }
 
-ul.navbar-nav .item4 {
+ul.navbar-nav .item2 {
     font-weight: bolder;
 }
 
 
+
+/* Content */
+.container {
+    height: 100%;
+}
+
+@media only screen and (max-width: 576px) {
+    
+    input {
+        width: 100%;
+        margin: 0;
+    }
+
+    .content-header {
+        text-align: center;
+        padding-top: 6%;
+        font-size: 1rem;
+    }
+
+    div.form {
+        margin: 0;
+    }
+
+}
+
+.content-header {
+    text-align: center;
+    margin: 0 10%;
+    padding-top: 6%;
+    font-size: 1rem;
+}
+
+div.form {
+    border: black solid 1px;
+    margin: 0 15%;
+    text-align: center;
+}
+
+div.form div {
+    margin: 5% 0;
+}
+
+input {
+    border: none;
+    background-color: lightgray;
+    color: black;
+    width: 50%;
+    height: 35px;
+}
+
+div.button button {
+
+}
