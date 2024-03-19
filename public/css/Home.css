@@ -169,7 +169,7 @@ nav {
   background-color: var(--teal);
 }
 .nav-item-bot {
-  font-size: 30px;
+  font-size: 25px;
   margin-left: 80px;
   margin-right: 80px;
   z-index: 1;

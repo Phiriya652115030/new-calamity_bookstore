@@ -34,15 +34,87 @@ app.post('/product/add', (req, res) => {
     });
 });
 
+//render home page
 app.get('/', (req, res) => {
-    res.render('user/home');
+    res.render('user/account_info');
 });
 
+//go to add-category
+app.get('/add-category', (req, res) => {
+    res.render('admin/category/add_category', {name:'Add'});
+});
 
+//go to edit-category
+app.get('/edit-product', (req, res) => {
+    res.render('admin/products/edit_product', {name:'Edit'});
+});
 
-//go to all category
+//go to manage-category
+
+//go to add-product
+app.get('/add-product', (req, res) => {
+    res.render('admin/products/add_product', {name:'Add'});
+});
+
+//go to edit-product
+
+//go to manage-product
+app.get('/manage-product', (req, res) => {
+    res.render('admin/products/manage_product');
+});
+
+//go to top-product
+
+//go to bill-summary
+
+//go to dashboard
+
+//go to staff-login
+
+//go to staff-order
+
+//go to staff-product
+
+//go to staff-setting
+
+//go to address-book
+app.get('/address-book', (req, res) => {
+    res.render('user/address_book');
+});
+
+//go to my-order
+app.get('/my-order', (req, res) => {
+    res.render('user/my_order');
+});
+
+//go to my-wishlist
+app.get('/wishlist', (req, res) => {
+    res.render('user/my_wishlist');
+});
+
+//go to track-order
+app.get('/track-order', (req, res) => {
+    res.render('user/track_order');
+});
+
+//go to about-us
+app.get('/about_us', (req, res) => {
+    res.render('user/about_us');
+});
+
+//go to account-info
+app.get('/account-info', (req, res) => {
+    res.render('user/account_info');
+});
+
+//go to all-category
 app.get('/all-category', (req, res) => {
     res.render('user/all_category');
+});
+
+//go to cart-page
+app.get('/cart', (req, res) => {
+    res.render('user/cart_page');
 });
 
 //go to comics
@@ -50,27 +122,32 @@ app.get('/comics', (req, res) => {
     res.render('user/comics');
 });
 
-//go to  manage products
-app.get('/manage-product', (req, res) => {
-    res.render('admin/products/manage_product');
+//go to contact
+app.get('/contact', (req, res) => {
+    res.render('user/contact');
 });
 
-//for go to the product click the image
-// do it later
-
-app.get('/add-category', (req, res) => {
-    res.render('admin/category/add_category', {name:'Add'});
+//go to home
+app.get('/home', (req, res) => {
+    res.render('user/home');
 });
 
+//go to login
+app.get('/login', (req, res) => {
+    res.render('user/login');
+});
 
-app.get('/add-product', (req, res) => {
-    res.render('admin/products/add_product', {name:'Add'});
-})
+//go to product-page
 
-app.get('/edit-product', (req, res) => {
-    res.render('admin/products/edit_product', {name:'Edit'});
-})
+//go to registration
+app.get('/registration', (req, res) => {
+    res.render('user/registration');
+});
 
+//go to home(signout)
+app.get('/sign-out', (req, res) => {
+    res.render('user/home');
+});
 // Set the views directory
 app.set('views', path.join(__dirname, 'views'));
 
