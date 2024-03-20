@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- link css -->
-    <link rel="stylesheet" href="../css/admin/Manage-product.css" />
+    <link rel="stylesheet" href="css/Manage-product.css" />
 
     <script src="https://kit.fontawesome.com/0881759a8c.js" crossorigin="anonymous"></script>
 </head>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="panel">
-            <table>
+            <table id="product-table">
                 <thead>
                     <tr>
                         <th>Number</th>
@@ -45,21 +45,8 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Example product rows -->
-                    <tr>
-                        <td>1</td>
-                        <td><img src="product1.jpg" alt="Product 1"></td>
-                        <td>Product 1</td>
-                        <td>P1</td>
-                        <td>$19.99</td>
-                        <td>100</td>
-                        <td>
-                            <a href="/edit-product"><button>Edit</button></a>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
-                    <!-- More product rows here -->
+                <tbody id="product-list">
+                    <!-- Product rows will be dynamically generated here -->
                 </tbody>
             </table>
         </div>
@@ -69,13 +56,9 @@
             <i class="fa-solid fa-arrow-right"></i>
         </div>
     </div>
+    
     <%- include('../../templates/footer') %>
 
 
 <!-- for js DOM -->
-<script>
-    // const addButton = document.getElementsByClassName("box")[0];
-    // addButton.addEventListener("click", () => {
-    //     alert("Gello");
-    // });
-</script>
+<script src="js/manage-product.js"></script>
