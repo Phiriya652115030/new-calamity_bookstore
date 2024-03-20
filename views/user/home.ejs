@@ -108,49 +108,45 @@
         <div class="col-12 col-lg-8">
           <div class="products-con">
 
-            <!--Flash Product-card start-->
-            <div class="products-item">
-              
-              <div class="products-img position-relative">
-                <img src="/Assets/one-punce01.jpg" alt="">   
-                <p class="product-label position-absolute">
-                  <span class="line-1">25%</span> 
-                  <br>
-                  <span class="line-2">OFF</span> 
-                </p> 
-              </div>
-
-              <div class="products-detail">
-                <p><span>one-punce man 01</span></p>
-                <p>Comics</p>
-              </div>
-                  <div class="products-icon">
-                    <p><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
-                  
-                    <p><i class="fa-regular fa-heart"></i></p>
+            <!-- Placeholder for promotion products -->
+            <%// Filter products with discount percentage != 0 and limit to first 5
+            const filteredProducts = products.filter(product => product.percent !== 0).slice(0, 4);
+            if (filteredProducts.length === 0) { %>
+              <p>No products available</p>
+            <% } else { %>
+              <% filteredProducts.forEach(product => { %>
+                <div class="products-item">
+                  <div class="products-img position-relative">
+                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
+                    <p class="product-label position-absolute">
+                      <span class="line-1"><%= product.percent %></span> 
+                      <br>
+                      <span class="line-2">OFF</span> 
+                    </p>
                   </div>
-                  
-              <!--price start-->
-              <div class="products-price">
-                <div class="discount">
-                  <p><i class="fa-solid fa-baht-sign"></i>50</p>
+                  <div class="products-detail">
+                    <p><span><%= product.product_name %></span></p>
+                    <p><%= product.category_type %></p>
+                  </div>
+                  <!-- Other product details -->
+                  <div class="products-price">
+                    <div class="discount">
+                      <p><i class="fa-solid fa-baht-sign"></i><%= product.price_discount %></p>
+                    </div>
+                    <div class="original">
+                      <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i><%= product.price %></span></p>
+                    </div>
+                  </div>
+                  <div class="products-buy">
+                    <div>
+                      <button class="addbag-b"><p>add to bag</p></button>
+                    </div>
+                  </div>
                 </div>
-                <div class="original">
-                  <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i>100</span></span></p>
-                </div>
-              </div>
-              <!--price start-->
+              <% }); %>
+            <% } %>
+            <!-- Placeholder for promotion products -->
 
-              <div class="products-buy">
-                <div >
-                  <button class="addbag-b"><p>add to bag</p></button>
-                </div>
-              </div>
-            </div>
-            <!--Flash Product-card end-->
-
-            
-     
           </div>             
         </div>
 
@@ -182,46 +178,36 @@
         <div class="col-12 col-lg">
           <div class="products-con-common">
 
-            <!--Best seller Product-card start-->
-            <div class="products-item">
-              
-              <div class="products-img position-relative">
-                <img src="/Assets/one-punce01.jpg" alt="">   
-                <!--<p class="product-label position-absolute">
-                  <span class="line-1">25%</span> 
-                  <br>
-                  <span class="line-2">OFF</span> 
-                </p>--> 
-              </div>
-
-              <div class="products-detail">
-                <p><span>one-punce man 01</span></p>
-                <p>Comics</p>
-              </div>
-                  <div class="products-icon">
-                    <p><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
-                  
-                    <p><i class="fa-regular fa-heart"></i></p>
+            <!-- Placeholder for Bestseller products -->
+            <% // Sort products by quantity in ascending order
+            const bestsellerProducts = products.sort((a, b) => a.quantity - b.quantity).slice(0, 5);
+            if (bestsellerProducts.length === 0) { %>
+              <p>No bestseller products available</p>
+            <% } else { %>
+              <% bestsellerProducts.forEach(product => { %>
+                <div class="products-item">
+                  <div class="products-img position-relative">
+                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
                   </div>
-                  
-              <!--price start-->
-              <div class="products-price">
-                <div class="discount">
-                  <p><i class="fa-solid fa-baht-sign"></i>50</p>
+                  <div class="products-detail">
+                    <p><span><%= product.product_name %></span></p>
+                    <p><%= product.category_type %></p>
+                  </div>
+                  <!-- Other product details -->
+                  <div class="products-price">
+                    <div class="original">
+                      <p><span class=""><i class="fa-solid fa-baht-sign "></i><%= product.price %></span></p>
+                    </div>
+                  </div>
+                  <div class="products-buy">
+                    <div>
+                      <button class="addbag-b"><p>add to bag</p></button>
+                    </div>
+                  </div>
                 </div>
-                <div class="original">
-                  <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i>100</span></span></p>
-                </div>
-              </div>
-              <!--price start-->
+              <% }); %>
+            <% } %>
 
-              <div class="products-buy">
-                <div >
-                  <button class="addbag-b "><p>add to bag</p></button>
-                </div>
-              </div>
-            </div>
-            <!--Best seller Product-card end-->
 
           </div>             
         </div>
@@ -254,46 +240,36 @@
         <div class="col-12 col-lg">
           <div class="products-con-common">
 
-            <!--New Release Product-card start-->
-            <div class="products-item">
-              
-              <div class="products-img position-relative">
-                <img src="/Assets/one-punce01.jpg" alt="">   
-                <!--<p class="product-label position-absolute">
-                  <span class="line-1">25%</span> 
-                  <br>
-                  <span class="line-2">OFF</span> 
-                </p>--> 
-              </div>
-
-              <div class="products-detail">
-                <p><span>one-punce man 01</span></p>
-                <p>Comics</p>
-              </div>
-                  <div class="products-icon">
-                    <p><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
-                  
-                    <p><i class="fa-regular fa-heart"></i></p>
+            <!-- Placeholder for New Release products -->
+            <% // Sort products by release date in descending order (newest first)
+            const newReleaseProducts = products.sort((a, b) => new Date(b.public_date) - new Date(a.public_date)).slice(0, 5);
+            if (newReleaseProducts.length === 0) { %>
+              <p>No new release products available</p>
+            <% } else { %>
+              <% newReleaseProducts.forEach(product => { %>
+                <div class="products-item">
+                  <div class="products-img position-relative">
+                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
                   </div>
-                  
-              <!--price start-->
-              <div class="products-price">
-                <div class="discount">
-                  <p><i class="fa-solid fa-baht-sign"></i>50</p>
+                  <div class="products-detail">
+                    <p><span><%= product.product_name %></span></p>
+                    <p><%= product.category_type %></p>
+                  </div>
+                  <!-- Other product details -->
+                  <div class="products-price">
+                    <div class="original">
+                      <p><span class=""><i class="fa-solid fa-baht-sign "></i><%= product.price %></span></p>
+                    </div>
+                  </div>
+                  <div class="products-buy">
+                    <div>
+                      <button class="addbag-b"><p>add to bag</p></button>
+                    </div>
+                  </div>
                 </div>
-                <div class="original">
-                  <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i>100</span></span></p>
-                </div>
-              </div>
-              <!--price start-->
+              <% }); %>
+            <% } %>
 
-              <div class="products-buy">
-                <div >
-                  <button class="addbag-b "><p>add to bag</p></button>
-                </div>
-              </div>
-            </div>
-            <!--New Release Product-card end-->
 
           </div>             
         </div>
@@ -325,46 +301,36 @@
         <div class="col-12 col-lg">
           <div class="products-con-common">
 
-            <!--Highlight Product-card start-->
-            <div class="products-item">
-              
-              <div class="products-img position-relative">
-                <img src="/Assets/one-punce01.jpg" alt="">   
-                <!--<p class="product-label position-absolute">
-                  <span class="line-1">25%</span> 
-                  <br>
-                  <span class="line-2">OFF</span> 
-                </p>--> 
-              </div>
-
-              <div class="products-detail">
-                <p><span>one-punce man 01</span></p>
-                <p>Comics</p>
-              </div>
-                  <div class="products-icon">
-                    <p><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
-                  
-                    <p><i class="fa-regular fa-heart"></i></p>
+            <!-- Placeholder for Highlight products -->
+            <% // Sort products by star rating in descending order (highest first)
+            const highlightProducts = products.sort((a, b) => b.star - a.star).slice(0, 5);
+            if (highlightProducts.length === 0) { %>
+              <p>No highlight products available</p>
+            <% } else { %>
+              <% highlightProducts.forEach(product => { %>
+                <div class="products-item">
+                  <div class="products-img position-relative">
+                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
                   </div>
-                  
-              <!--price start-->
-              <div class="products-price">
-                <div class="discount">
-                  <p><i class="fa-solid fa-baht-sign"></i>50</p>
+                  <div class="products-detail">
+                    <p><span><%= product.product_name %></span></p>
+                    <p><%= product.category_type %></p>
+                  </div>
+                  <!-- Other product details -->
+                  <div class="products-price">
+                    <div class="original">
+                      <p><span class=""><i class="fa-solid fa-baht-sign "></i><%= product.price %></span></p>
+                    </div>
+                  </div>
+                  <div class="products-buy">
+                    <div>
+                      <button class="addbag-b"><p>add to bag</p></button>
+                    </div>
+                  </div>
                 </div>
-                <div class="original">
-                  <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i>100</span></span></p>
-                </div>
-              </div>
-              <!--price start-->
+              <% }); %>
+            <% } %>
 
-              <div class="products-buy">
-                <div >
-                  <button class="addbag-b "><p>add to bag</p></button>
-                </div>
-              </div>
-            </div>
-            <!--Highlight Product-card end-->
 
           </div>             
         </div>
@@ -396,46 +362,36 @@
         <div class="col-12 col-lg">
           <div class="products-con-common">
 
-            <!--Coming Soon Product-card start-->
-            <div class="products-item">
-              
-              <div class="products-img position-relative">
-                <img src="/Assets/one-punce01.jpg" alt="">   
-                <!--<p class="product-label position-absolute">
-                  <span class="line-1">25%</span> 
-                  <br>
-                  <span class="line-2">OFF</span> 
-                </p>--> 
-              </div>
-
-              <div class="products-detail">
-                <p><span>one-punce man 01</span></p>
-                <p>Comics</p>
-              </div>
-                  <div class="products-icon">
-                    <p><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
-                  
-                    <p><i class="fa-regular fa-heart"></i></p>
+            <!-- Placeholder for Coming Soon products -->
+            <% // Filter products with a release date later than March 20, 2024
+            const comingSoonProducts = products.filter(product => new Date(product.public_date) > new Date('2024-06-20')).slice(0, 5);
+            if (comingSoonProducts.length === 0) { %>
+              <p>No coming soon products available</p>
+            <% } else { %>
+              <% comingSoonProducts.forEach(product => { %>
+                <div class="products-item">
+                  <div class="products-img position-relative">
+                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
                   </div>
-                  
-              <!--price start-->
-              <div class="products-price">
-                <div class="discount">
-                  <p><i class="fa-solid fa-baht-sign"></i>50</p>
+                  <div class="products-detail">
+                    <p><span><%= product.product_name %></span></p>
+                    <p><%= product.category_type %></p>
+                  </div>
+                  <!-- Other product details -->
+                  <div class="products-price">
+                    <div class="original">
+                      <p><span class=""><i class="fa-solid fa-baht-sign "></i><%= product.price %></span></p>
+                    </div>
+                  </div>
+                  <div class="products-buy">
+                    <div>
+                      <button class="addbag-b"><p>add to bag</p></button>
+                    </div>
+                  </div>
                 </div>
-                <div class="original">
-                  <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i>100</span></span></p>
-                </div>
-              </div>
-              <!--price start-->
+              <% }); %>
+            <% } %>
 
-              <div class="products-buy">
-                <div >
-                  <button class="addbag-b "><p>add to bag</p></button>
-                </div>
-              </div>
-            </div>
-            <!--Coming Soon Product-card end-->
 
           </div>             
         </div>

@@ -5,6 +5,7 @@ const mysql = require('mysql2');
 const path = require('path');
 const ejs = require('ejs'); // Correct 
 
+
 app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
@@ -16,28 +17,47 @@ const db = mysql.createConnection({
     host: "127.0.0.1",
     user: "root",
     password: "Tun-48449",
-    database: "fe_bookstore"
+    database: "fe_book"
 });
 
+// Connect to MySQL
+db.connect((err) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err);
+        return;
+    }
+    console.log('Connected to MySQL database');
+    // Now you can start fetching products
+    fetchProducts();
+   
+});
 
-app.post('/product/add', (req, res) => {
-    const { productName, category, author, publicationDate, quantity, regularPrice, salePrice, description, imageURL } = req.body; 
-    const sql = 'INSERT INTO products (product_name, category_type, product_author, public_date, quantity, price, price_discount, description, imgurl) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'; 
-
-    db.execute(sql, [productName, category, author, publicationDate, quantity, regularPrice, salePrice, description, imageURL], (error, results) => { 
-        if (error) {
-            console.error('Error inserting into the database: ', error);
-            return res.status(500).send('Internal Server Error');
+// Function to fetch Allproducts
+function fetchProducts() {
+    db.query('SELECT * FROM product', (err, results) => {
+        if (err) {
+            console.error('Error fetching products:', err);
+            return;
         }
-        console.log('Inserted product into database:', results);
-        res.redirect('/'); 
+        /*console.log('Products:', results);*/
+        // Pass products to render
+        app.locals.products = results;
     });
-});
+}
 
 //render home page
 app.get('/', (req, res) => {
-    res.render('user/home');
+    res.render('user/home', { product : app.locals.products });
 });
+
+
+
+
+
+
+
+
+
 
 //go to add-category
 app.get('/add-category', (req, res) => {
@@ -157,7 +177,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-console.log("connected to daatbase");
+
 
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
