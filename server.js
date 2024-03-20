@@ -15,7 +15,7 @@ app.use(express.static("public"));
 const db = mysql.createConnection({
     host: "127.0.0.1",
     user: "root",
-    password: "Comfirm17295",
+    password: "Tun-48449",
     database: "fe_bookstore"
 });
 
@@ -36,7 +36,7 @@ app.post('/product/add', (req, res) => {
 
 //render home page
 app.get('/', (req, res) => {
-    res.render('user/account_info');
+    res.render('user/home');
 });
 
 //go to add-category
@@ -70,6 +70,9 @@ app.get('/manage-product', (req, res) => {
 //go to dashboard
 
 //go to staff-login
+app.get('/staff-login', (req, res) => {
+    res.render('admin/staff_login');
+});
 
 //go to staff-order
 
