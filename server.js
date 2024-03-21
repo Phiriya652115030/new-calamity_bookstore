@@ -70,7 +70,9 @@ app.get('/edit-product', (req, res) => {
 });
 
 //go to manage-category
-
+app.get('/manage-category', (req, res) => {
+    res.render('admin/manage_category');
+});
 //go to add-product
 app.get('/add-product', (req, res) => {
     res.render('admin/products/add_product', {name:'Add'});
@@ -80,14 +82,21 @@ app.get('/add-product', (req, res) => {
 
 //go to manage-product
 app.get('/manage-product', (req, res) => {
-    res.render('admin/products/manage_product');
+    res.render('admin/manage_product');
 });
 
 //go to top-product
+app.get('/top-product', (req, res) => {
+    res.render('admin/top_product');
+});
 
 //go to bill-summary
+app.get('/bill-summary', (req, res) => {
+    res.render('admin/bill_summary');
+});
 
 //go to dashboard
+
 
 //go to staff-login
 app.get('/staff-login', (req, res) => {
@@ -96,7 +105,23 @@ app.get('/staff-login', (req, res) => {
 
 //go to staff-order
 
-//go to staff-product
+
+//go to staff-product-dashboard
+app.get('/dashboard', (req, res) => {
+    res.render('admin/dashboard');
+});
+//go to staff-product-product
+app.get('/staff-product', (req, res) => {
+    res.render('admin/staff_product');
+});
+//go to staff-product-order
+app.get('/staff-order', (req, res) => {
+    res.render('admin/staff_order');
+});
+//go to staff-product-setting
+app.get('/staff-setting', (req, res) => {
+    res.render('admin/staff_setting');
+});
 
 //go to staff-setting
 
