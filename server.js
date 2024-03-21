@@ -61,12 +61,12 @@ app.get('/', (req, res) => {
 
 //go to add-category
 app.get('/add-category', (req, res) => {
-    res.render('admin/category/add_category', {name:'Add'});
+    res.render('admin/add_category', {name:'Add'});
 });
 
 //go to edit-category
-app.get('/edit-product', (req, res) => {
-    res.render('admin/products/edit_product', {name:'Edit'});
+app.get('/edit-category', (req, res) => {
+    res.render('admin/edit_category', {name:'Edit'});
 });
 
 //go to manage-category
@@ -75,7 +75,7 @@ app.get('/manage-category', (req, res) => {
 });
 //go to add-product
 app.get('/add-product', (req, res) => {
-    res.render('admin/products/add_product', {name:'Add'});
+    res.render('admin/add_product', {name:'Add'});
 });
 
 //go to edit-product
@@ -186,6 +186,9 @@ app.get('/login', (req, res) => {
 });
 
 //go to product-page
+app.get('/product-page', (req, res) => {
+    res.render('user/product_page');
+});
 
 //go to registration
 app.get('/registration', (req, res) => {

@@ -117,7 +117,9 @@
               <% filteredProducts.forEach(product => { %>
                 <div class="products-item">
                   <div class="products-img position-relative">
-                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
+                    <a href="/product-page">
+                    <img src="<%= product.img_link %>" alt="<%= product.product_name %>">
+                    </a>
                     <p class="product-label position-absolute">
                       <span class="line-1"><%= product.percent %></span> 
                       <br>
@@ -168,7 +170,7 @@
           </div>
           
           <div class="btnViewall">
-            <a href="#">View all <i class="fas fa-chevron-right fa-xs"></i></a>
+            <a href="/all-category">View all <i class="fas fa-chevron-right fa-xs"></i></a>
           </div>
 
       </div>
@@ -187,7 +189,9 @@
               <% bestsellerProducts.forEach(product => { %>
                 <div class="products-item">
                   <div class="products-img position-relative">
-                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
+                    <a href="/product-page">
+                    <img src="<%= product.img_link %>" alt="<%= product.product_name %>">
+                </a>
                   </div>
                   <div class="products-detail">
                     <p><span><%= product.product_name %></span></p>
@@ -230,7 +234,7 @@
           </div>
           
           <div class="btnViewall">
-            <a href="#">View all <i class="fas fa-chevron-right fa-xs"></i></a>
+            <a href="/all-category">View all <i class="fas fa-chevron-right fa-xs"></i></a>
           </div>
 
       </div>
@@ -249,7 +253,9 @@
               <% newReleaseProducts.forEach(product => { %>
                 <div class="products-item">
                   <div class="products-img position-relative">
-                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
+                    <a href="/product-page">
+                    <img src="<%= product.img_link %>" alt="<%= product.product_name %>">
+                    </a>
                   </div>
                   <div class="products-detail">
                     <p><span><%= product.product_name %></span></p>
@@ -291,7 +297,7 @@
           </div>
           
           <div class="btnViewall">
-            <a href="#">View all <i class="fas fa-chevron-right fa-xs"></i></a>
+            <a href="/all-category">View all <i class="fas fa-chevron-right fa-xs"></i></a>
           </div>
 
       </div>
@@ -310,7 +316,9 @@
               <% highlightProducts.forEach(product => { %>
                 <div class="products-item">
                   <div class="products-img position-relative">
-                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
+                    <a href="/product-page">
+                    <img src="<%= product.img_link %>" alt="<%= product.product_name %>">
+                  </a>
                   </div>
                   <div class="products-detail">
                     <p><span><%= product.product_name %></span></p>
@@ -352,7 +360,7 @@
           </div>
           
           <div class="btnViewall">
-            <a href="#">View all <i class="fas fa-chevron-right fa-xs"></i></a>
+            <a href="/all-category">View all <i class="fas fa-chevron-right fa-xs"></i></a>
           </div>
 
       </div>
@@ -371,7 +379,9 @@
               <% comingSoonProducts.forEach(product => { %>
                 <div class="products-item">
                   <div class="products-img position-relative">
-                    <img src="<%= product.img_url %>" alt="<%= product.product_name %>">
+                    <a href="/product-page">
+                    <img src="<%= product.img_link %>" alt="<%= product.product_name %>">
+                  </a>
                   </div>
                   <div class="products-detail">
                     <p><span><%= product.product_name %></span></p>
