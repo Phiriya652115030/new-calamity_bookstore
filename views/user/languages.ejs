@@ -46,11 +46,11 @@
 
         <!--Best seller Product-card start-->
         <% 
-        const comicsProducts = products.filter(product => product.category_type === "Comics");
-        if (comicsProducts.length === 0) { %>
+        const langProducts = products.filter(product => product.category_type === "Languages");
+        if (langProducts.length === 0) { %>
           <p>No new release products available</p>
         <% } else { %>
-          <% comicsProducts.forEach(product => { %>
+          <% langProducts.forEach(product => { %>
             <div class="products-item">
               <div class="products-img position-relative">
                 <a href="/product-page">

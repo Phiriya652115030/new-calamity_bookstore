@@ -79,7 +79,9 @@ app.get('/add-product', (req, res) => {
 });
 
 //go to edit-product
-
+app.get('/edit-product', (req, res) => {
+    res.render('admin/edit_product');
+});
 //go to manage-product
 app.get('/manage-product', (req, res) => {
     res.render('admin/manage_product');
@@ -95,16 +97,15 @@ app.get('/bill-summary', (req, res) => {
     res.render('admin/bill_summary');
 });
 
-//go to dashboard
-
-
 //go to staff-login
 app.get('/staff-login', (req, res) => {
     res.render('admin/staff_login');
 });
 
 //go to staff-order
-
+app.get('/staff-order', (req, res) => {
+    res.render('admin/staff_order');
+});
 
 //go to staff-product-dashboard
 app.get('/dashboard', (req, res) => {
@@ -124,7 +125,9 @@ app.get('/staff-setting', (req, res) => {
 });
 
 //go to staff-setting
-
+app.get('/staff-setting', (req, res) => {
+    res.render('admin/staff_setting');
+});
 //go to address-book
 app.get('/address-book', (req, res) => {
     res.render('user/address_book');
@@ -169,6 +172,17 @@ app.get('/cart', (req, res) => {
 app.get('/comics', (req, res) => {
     res.render('user/comics');
 });
+
+//go to fiction
+app.get('/fiction', (req, res) => {
+    res.render('user/fiction');
+});
+
+//go to languages
+app.get('/lang', (req, res) => {
+    res.render('user/languages');
+});
+
 
 //go to contact
 app.get('/contact', (req, res) => {
