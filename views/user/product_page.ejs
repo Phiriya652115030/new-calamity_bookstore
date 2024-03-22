@@ -19,27 +19,39 @@
 <div class="containers wraper" style="margin-top: 50px; margin-bottom: 50px;">
     <div class="row top-contact">
         <div class="col-sm-6 col-lg-6 center">        
-            <div class="Product-img">             
-                <img id="product-image" src="/Assets/one-punce01.jpg" alt="" width="600px" height="600px">          
+            <!-- Displaying only one product image -->
+            <div class="products-item">
+                <div class="products-img position-relative">
+                    <a href="/product-page"> <!-- Anchor tag for navigation -->
+                        <img src="<%= products[0].img_link %>" alt="<%= products[0].product_name %>">
+                    </a>
+                    <p class="product-label position-absolute">
+                        <span class="line-1"><%= products[0].percent %></span> 
+                        <br>
+                        <span class="line-2">OFF</span> 
+                    </p>
+                </div>
             </div>
         </div>
 
         <div class="col-sm-6 col-lg-6 ">
+            <!-- Product details -->
             <div class="Product-info">
-                <h4 id="product-title">one-punce man 01</h4>
-                <h4 id="product-item">item #001</h4>
+                <h4 id="product-title"><%= products[0].product_name %></h4>
+                <h4 id="product-item">ID: <%= products[0].product_ID %></h4>
                 <p><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>
                 <div class="products-price">
                     <div class="discount">
-                        <p><i class="fa-solid fa-baht-sign"></i>50</p>
+                        <p><i class="fa-solid fa-baht-sign"></i><%= products[0].price_discount %></p>
                     </div>
                     <div class="original">
-                        <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i>100</span></p>
+                        <p><span class="line-discount"><i class="fa-solid fa-baht-sign "></i><%= products[0].price %></span></p>
                     </div>
                 </div>
                 <h4>Availability : <span id="product-availability">yes</span></h4>
             </div>
 
+            <!-- Quantity and add to cart button -->
             <div class="d-flex">
                 <div>
                     <div class="dropdown-center"> 
@@ -53,6 +65,7 @@
         </div>             
     </div>
 
+    <!-- Description -->
     <div class="flashsale mt-5">
         <div class="d-flex flex-column flex-lg-row center">
             <h2 class="filterflashsale-title">Description</h2>                
@@ -60,9 +73,10 @@
     </div>
 
     <div class="row top-contact">
-        <p id="product-description">Loading description...</p>
+        <p id="product-description"><%= products[0].description %></p>
     </div>
     
+    <!-- Details -->
     <div class="flashsale mt-5">
         <div class="d-flex flex-column flex-lg-row center">
             <h2 class="filterflashsale-title">Details</h2>                
@@ -73,19 +87,19 @@
         <table>
             <tr>
                 <th>Title</th>
-                <td id="product-name">Name</td>
+                <td id="product-name"><%= products[0].product_name %></td>
             </tr>
             <tr>
                 <th>Author</th>
-                <td id="product-author">Mr.One , Mr.Yusuke Murata</td>
+                <td id="product-author"><%= products[0].product_author %></td>
             </tr>
             <tr>
                 <th>Publication Date</th>
-                <td id="product-publication-date">May , 2023</td>
+                <td id="product-publication-date"><%= products[0].public_date %></td>
             </tr>
             <tr>
                 <th>Category</th>
-                <td id="product-category">Comics</td>
+                <td id="product-category"><%= products[0].category_type %></td>
             </tr>
         </table>
     </div>
@@ -96,29 +110,6 @@
 <script src="js/home.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', async function () {
-        try {
-            // Fetch book data from the server
-            const response = await fetch('/api/book/:bookId'); // Replace ':bookId' with the actual ID of the book
-            const bookData = await response.json();
-
-            // Update DOM elements with fetched data
-            document.getElementById('product-image').src = bookData.image;
-            document.getElementById('product-title').innerText = bookData.title;
-            document.getElementById('product-item').innerText = bookData.itemNumber;
-            document.getElementById('product-description').innerText = bookData.description;
-            document.getElementById('product-availability').innerText = bookData.availability;
-            document.getElementById('product-name').innerText = bookData.name;
-            document.getElementById('product-author').innerText = bookData.author;
-            document.getElementById('product-publication-date').innerText = bookData.publicationDate;
-            document.getElementById('product-category').innerText = bookData.category;
-        } catch (error) {
-            console.error('Error fetching book data:', error);
-        }
-    });
-</script>
 
 </body>
 </html>
