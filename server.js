@@ -61,12 +61,12 @@ app.get('/', (req, res) => {
 
 //go to add-category
 app.get('/add-category', (req, res) => {
-    res.render('admin/category/add_category', {name:'Add'});
+    res.render('admin/add_category', {name:'Add'});
 });
 
 //go to edit-category
-app.get('/edit-product', (req, res) => {
-    res.render('admin/products/edit_product', {name:'Edit'});
+app.get('/edit-category', (req, res) => {
+    res.render('admin/edit_category', {name:'Edit'});
 });
 
 //go to manage-category
@@ -75,11 +75,13 @@ app.get('/manage-category', (req, res) => {
 });
 //go to add-product
 app.get('/add-product', (req, res) => {
-    res.render('admin/products/add_product', {name:'Add'});
+    res.render('admin/add_product', {name:'Add'});
 });
 
 //go to edit-product
-
+app.get('/edit-product', (req, res) => {
+    res.render('admin/edit_product');
+});
 //go to manage-product
 app.get('/manage-product', (req, res) => {
     res.render('admin/manage_product');
@@ -95,16 +97,15 @@ app.get('/bill-summary', (req, res) => {
     res.render('admin/bill_summary');
 });
 
-//go to dashboard
-
-
 //go to staff-login
 app.get('/staff-login', (req, res) => {
     res.render('admin/staff_login');
 });
 
 //go to staff-order
-
+app.get('/staff-order', (req, res) => {
+    res.render('admin/staff_order');
+});
 
 //go to staff-product-dashboard
 app.get('/dashboard', (req, res) => {
@@ -124,7 +125,9 @@ app.get('/staff-setting', (req, res) => {
 });
 
 //go to staff-setting
-
+app.get('/staff-setting', (req, res) => {
+    res.render('admin/staff_setting');
+});
 //go to address-book
 app.get('/address-book', (req, res) => {
     res.render('user/address_book');
@@ -138,6 +141,11 @@ app.get('/my-order', (req, res) => {
 //go to my-wishlist
 app.get('/wishlist', (req, res) => {
     res.render('user/my_wishlist');
+});
+
+
+app.get('/test', (req, res) => {
+    res.render('user/test');
 });
 
 //go to track-order
@@ -170,6 +178,17 @@ app.get('/comics', (req, res) => {
     res.render('user/comics');
 });
 
+//go to fiction
+app.get('/fiction', (req, res) => {
+    res.render('user/fiction');
+});
+
+//go to languages
+app.get('/lang', (req, res) => {
+    res.render('user/languages');
+});
+
+
 //go to contact
 app.get('/contact', (req, res) => {
     res.render('user/contact');
@@ -186,6 +205,9 @@ app.get('/login', (req, res) => {
 });
 
 //go to product-page
+app.get('/product-page', (req, res) => {
+    res.render('user/product_page');
+});
 
 //go to registration
 app.get('/registration', (req, res) => {

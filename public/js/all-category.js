@@ -1,5 +1,5 @@
 let thisPage = 1;
-let limit = 5;
+let limit = 15;
 let listProduct = document.querySelectorAll('.products-item');
 
 function loadItem(){

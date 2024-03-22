@@ -80,6 +80,7 @@ div.or {
     display: flex;
     align-items: center;
     font-size: 2rem;
+    margin-top: 50px;
 }
 
 hr {
