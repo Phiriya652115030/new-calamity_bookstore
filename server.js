@@ -143,6 +143,11 @@ app.get('/wishlist', (req, res) => {
     res.render('user/my_wishlist');
 });
 
+
+app.get('/test', (req, res) => {
+    res.render('user/test');
+});
+
 //go to track-order
 app.get('/track-order', (req, res) => {
     res.render('user/track_order');
