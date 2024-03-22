@@ -44,8 +44,7 @@ div#form {
 }
 
 div.button {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     margin-top: 4%;
 }
 
@@ -56,9 +55,7 @@ button {
     background-color: lightgray;
 }
 
-button#LogInButton {
-    border-right: 0px;
-}
+
 
 
 label {

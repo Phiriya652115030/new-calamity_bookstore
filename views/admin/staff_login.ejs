@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Staff Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -17,31 +17,34 @@
       src="https://kit.fontawesome.com/451145afdd.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="css/Login.css">
+    
     <link rel="stylesheet" href="css/Home.css" />
+    <link rel="stylesheet" href="css/Staff-login.css" />
 </head>
 <body>
-    
     <%- include('../templates/nav-bar-user') %>
-
     <div id="container">
-        <h1 class="h1-text">Welcome</h1>
+        <h1 class="h1-text">Welcome Admin</h1>
         <div id="form">
             <div class="button">
-                <a href="/login"><button type="button LogInButton" id="LogInButton">Log in</button></a>
-                <a href="/registration"><button type="button SignInButton" id="SignInButton">Sign up</button></a>
+                <button type="button" id="LogInButton">Log in</button>
             </div>
             <br>
 
-            <label for="Email">Email</label><br>
-            <input type="email" name="email" id="inputEmail" placeholder="Enter Your Email"> 
+            <label for="adminID">Admin ID</label><br>
+            <input type="textt" name="adminID" id="inputAdminID" placeholder="Enter Your Admin ID">
             <br>
 
-            <label for="Password">Password</label><br>
+            <label for="adminName">Admin Name</label><br>
+            <input type="textt" name="adminName" id="inputAdminName" placeholder="Enter Your Admin Name"> 
+            <br>
+
+            <label for="password">Password</label><br>
             <input type="password" name="password" id="inputPassword" placeholder="Enter Your Password">
             <br>
+
             <div id="submitButton">
-                <a href="/account-info"><input type="submit" value="Log in"></a>
+                <a href="/staff-product"><input type="submit" value="Login"></a>
             </div>
             
             <div class="or">
@@ -54,24 +57,13 @@
                 <a href="https://www.google.co.uk/" target="_blank"><img src="img/googleLogo.svg" alt="google" class="LogoLink"></a>
                 <a href="https://www.facebook.com/" target="_blank"><img src="img/facebookLogo.svg" alt="facebook" class="LogoLink"></a>
             </div>
-
-            <div class="underLogo">
-                <a href="#">Forgot Password?</a>
-                <p>Do not have an account? <a href="/registration">Sign up now</a></p>
-            </div>
-            
     
         </div>
     </div>
 
     <footer>
-        <div>
+        <div style="text-align: center;">
             <a href="/home">&#60;Back to shopping</a>
-        </div>
-        <div>
-            <a href="/staff-login">
-                <img class="LogoLink2" src="imgAssets/AdminLogo.svg" alt="LogoAdmin">Admin
-            </a>
         </div>
     </footer>
     <script src="js/home.js"></script>
