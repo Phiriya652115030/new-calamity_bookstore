@@ -5,13 +5,19 @@ const mysql = require('mysql2');
 const path = require('path');
 const ejs = require('ejs'); // Correct 
 
+const lodash = require('lodash');
+
+const multer = require("multer");//body-parser upgrad
+const upload = multer();
 
 app.use(bodyParser.json());
 
+app.use(upload.none());
 app.set('view engine', 'ejs');
 
 // access to css / photo file
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql.createConnection({
     host: "127.0.0.1",
@@ -29,7 +35,7 @@ db.connect((err) => {
     console.log('Connected to MySQL database');
     // Now you can start fetching products
     fetchProducts();
-   
+    fetchCategory();
 });
 
 // Function to fetch Allproducts
@@ -50,13 +56,39 @@ app.get('/', (req, res) => {
     res.render('user/home', { product : app.locals.products });
 });
 
+//add category
+app.post('/book/add', (req, res) => {
+    const {Category_Name,img_url  } = req.body;
 
+    const sql = "INSERT INTO category (category_type,img_url) VALUES (?, ?)";
+    const values = [Category_Name,img_url];
 
+    console.log(values);
+    db.query(sql, values, (error, results, fields) => {
+        if (error) {
+            console.error('Error inserting data into database:', error);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        console.log('Data inserted successfully:', results);
 
+        res.redirect('/manage-category');
+        
+    });
+});
 
-
-
-
+// Function to fetch Category
+function fetchCategory() {
+    db.query('SELECT * FROM category', (err, results) => {
+        if (err) {
+            console.error('Error fetching category:', err);
+            return;
+        }
+        console.log('category:', results);
+        // Pass products to render
+        app.locals.category = results;
+    });
+}
 
 
 //go to add-category
@@ -64,15 +96,42 @@ app.get('/add-category', (req, res) => {
     res.render('admin/category/add_category', {name:'Add'});
 });
 
+
+//go to manage-category
+app.get('/manage-category', (req, res) => {
+    res.render('admin/manage_category' ,{ category : app.locals.category });
+});
+
+
+app.get("/delete_category" ,(req,res) => {
+
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //go to edit-category
 app.get('/edit-product', (req, res) => {
     res.render('admin/products/edit_product', {name:'Edit'});
 });
 
-//go to manage-category
-app.get('/manage-category', (req, res) => {
-    res.render('admin/manage_category');
-});
+
 //go to add-product
 app.get('/add-product', (req, res) => {
     res.render('admin/products/add_product', {name:'Add'});
@@ -140,6 +199,13 @@ app.get('/wishlist', (req, res) => {
     res.render('user/my_wishlist');
 });
 
+<<<<<<< Updated upstream
+=======
+app.get('/test', (req, res) => {
+    res.render('user/test');
+});
+
+>>>>>>> Stashed changes
 //go to track-order
 app.get('/track-order', (req, res) => {
     res.render('user/track_order');

@@ -34,21 +34,26 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                
+                    <% category.forEach(category => { %>
                 <tbody>
                     <!-- Example product rows -->
                     <tr>
-                        <td>1</td>
-                        <td><img src="product1.jpg" alt="Product 1"></td>
-                        <td>Comics</td>
+                        <td><%= category.category_ID%></td>
+                        <td><img src="<%= category.img_url%>" alt="Product 1"></td>
+                        <td><%= category.category_type%></td>
                         <td>
 
                             <button>Edit</button>
                             
-                            <button>Delete</button>
+                            <form action="/delete_category" method="post" >
+                                <button>Delete</button>
+                            </form>
                         </td>
                     </tr>
                     <!-- More product rows here -->
                 </tbody>
+                <% }); %>
             </table>
         </div>
         <div class="pagination">

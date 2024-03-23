@@ -16,22 +16,36 @@
     <div class="container">
         <h1><%=name%> Category</h1>
         <div class="context-box">
-            <div class="row">
-                <div class="col-lg-6 col-md-12 col-12">
-                    <div class="box1">Add Image</div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-12">
-                    <div class="box2">
-                        <div for="regular-price">Category Name:</div>
-                        <input type="string" id="boxs2" ><br>
-                        <div for="sale-price">Category ID:</div>
-                        <input id="boxs2" ><br>
+            
+                
+                <form action="/book/add" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div for="regular-price">
+                            img url
+                        </div>
+                        <div>
+                            <input type="string" id="boxs1" name="img_url">
+                        </div>
                     </div>
+                    
+                    <div class="col-lg-6 col-md-12 col-12 ">
+                        <div>
+                            <div for="regular-price">
+                                Category Name:
+                            </div>
+                            <input type="string" id="boxs2" name="Category_Name"><br>
+                        </div>
+                         <a href="/manage-category"><button id="confirm-button" class="confirm-button" >Confirm</button></a>    
+                    </div>
+                    
+                    
                 </div>
-            </div>
+                </form>
+            
         </div>
     </div>
-    <a href="/manage-category"><button id="confirm-button" class="confirm-button">Confirm</button></a>
+    
     <script src="js/add-category.js"></script>
 
 <%- include('../../templates/footer') %>
