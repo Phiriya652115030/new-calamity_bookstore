@@ -5,87 +5,191 @@ const mysql = require('mysql2');
 const path = require('path');
 const ejs = require('ejs'); // Correct 
 
+var createError = require('http-errors');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-app.use(bodyParser.json());
 
+let flash = require('express-flash');
+let session = require('express-session');
+let db = require('./config/db')
+
+var booksRouter = require('./routes/books');
+var CategoryRouter = require('./routes/category');
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// access to css / photo file
-app.use(express.static("public"));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-const db = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "Tun-48449",
-    database: "fe_book"
-});
 
-// Connect to MySQL
-db.connect((err) => {
-    if (err) {
-        console.error('Error connecting to MySQL:', err);
-        return;
-    }
-    console.log('Connected to MySQL database');
-    // Now you can start fetching products
-    fetchProducts();
-   
-});
+app.use(session({
+  cookie: { maxAge:60000 },
+  store: new session.MemoryStore,
+  saveUninitialized: true,
+  resave: 'true',
+  secret: 'secret'
+}))
 
-// Function to fetch Allproducts
+app.use(flash());
+
+
+app.use('/manage-product', booksRouter);
+app.use('/manage-category',  CategoryRouter);
+
+// // catch 404 and forward to error handler
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
+
+// // error handler
+// app.use(function(err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
+
+// Function to fetch products from the database
 function fetchProducts() {
-    db.query('SELECT * FROM product', (err, results) => {
-        if (err) {
-            console.error('Error fetching products:', err);
-            return;
-        }
-        /*console.log('Products:', results);*/
-        // Pass products to render
-        app.locals.products = results;
+    return new Promise((resolve, reject) => {
+        // Query to fetch products
+        db.query('SELECT * FROM product', (error, results, fields) => {
+            if (error) {
+                reject(error); // Reject the promise if there's an error
+            } else {
+                resolve(results); // Resolve the promise with the fetched products
+            }
+        });
     });
 }
 
 //render home page
-app.get('/', (req, res) => {
-    res.render('user/home', { product : app.locals.products });
+app.get('/', async (req, res) => {
+    try {
+        // Fetch products from the database
+        const products = await fetchProducts();
+
+        // Render the home page and pass products to the template
+        res.render('user/home', { products: products });
+    } catch (error) {
+        // Handle any errors that occur during product fetching
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
+});
+
+//go to all-category
+app.get('/all-category', async (req, res) => {
+    try {
+        // Fetch products from the database
+        const products = await fetchProducts();
+
+        // Render the home page and pass products to the template
+        res.render('user/all_category', { products: products });
+    } catch (error) {
+        // Handle any errors that occur during product fetching
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
 });
 
 
+//go to comics
+app.get('/comics', async (req, res) => {
+    try {
+        // Fetch products from the database
+        const products = await fetchProducts();
 
-
-
-
-
-
-
-
-//go to add-category
-app.get('/add-category', (req, res) => {
-    res.render('admin/add_category', {name:'Add'});
+        // Render the home page and pass products to the template
+        res.render('user/comics', { products: products });
+    } catch (error) {
+        // Handle any errors that occur during product fetching
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
 });
 
-//go to edit-category
-app.get('/edit-category', (req, res) => {
-    res.render('admin/edit_category', {name:'Edit'});
+//go to fiction
+app.get('/fiction', async (req, res) => {
+    try {
+        // Fetch products from the database
+        const products = await fetchProducts();
+
+        // Render the home page and pass products to the template
+        res.render('user/fiction', { products: products });
+    } catch (error) {
+        // Handle any errors that occur during product fetching
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
 });
 
-//go to manage-category
-app.get('/manage-category', (req, res) => {
-    res.render('admin/manage_category');
-});
-//go to add-product
-app.get('/add-product', (req, res) => {
-    res.render('admin/add_product', {name:'Add'});
+//go to languages
+app.get('/lang', async (req, res) => {
+    try {
+        // Fetch products from the database
+        const products = await fetchProducts();
+
+        // Render the home page and pass products to the template
+        res.render('user/languages', { products: products });
+    } catch (error) {
+        // Handle any errors that occur during product fetching
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
 });
 
-//go to edit-product
-app.get('/edit-product', (req, res) => {
-    res.render('admin/edit_product');
-});
 //go to manage-product
-app.get('/manage-product', (req, res) => {
-    res.render('admin/manage_product');
+app.get('/views/manage-category', (req, res) => {
+    res.render('/manage_category/indexCat');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //go to top-product
 app.get('/top-product', (req, res) => {
@@ -163,30 +267,14 @@ app.get('/account-info', (req, res) => {
     res.render('user/account_info');
 });
 
-//go to all-category
-app.get('/all-category', (req, res) => {
-    res.render('user/all_category');
-});
+
 
 //go to cart-page
 app.get('/cart', (req, res) => {
     res.render('user/cart_page');
 });
 
-//go to comics
-app.get('/comics', (req, res) => {
-    res.render('user/comics');
-});
 
-//go to fiction
-app.get('/fiction', (req, res) => {
-    res.render('user/fiction');
-});
-
-//go to languages
-app.get('/lang', (req, res) => {
-    res.render('user/languages');
-});
 
 
 //go to contact
@@ -195,7 +283,7 @@ app.get('/contact', (req, res) => {
 });
 
 //go to home
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.render('user/home');
 });
 
@@ -218,17 +306,15 @@ app.get('/registration', (req, res) => {
 app.get('/sign-out', (req, res) => {
     res.render('user/home');
 });
-// Set the views directory
-app.set('views', path.join(__dirname, 'views'));
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
   });
+  
+  
+  module.exports = app;
 
   //all page link use wehn all page for html finished
 

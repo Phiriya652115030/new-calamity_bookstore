@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products</title>
+    <link rel="stylesheet" href="css/Manage-product.css">
+    <link rel="stylesheet" href="css/Admin-nav-bar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<body>
+    
+    <%- include('../templates/nav-bar-admin-product') %>
+    
+    <div class="container" style="margin-top: 50px;">
+        <% if(messages.error) { %>
+            <div class="alert alert-danger" role="alert"><%= messages.error%></div>
+        <% } %>
+        <% if(messages.success) { %>
+            <div class="alert alert-success" role="alert"><%= messages.success%></div>
+        <% } %>
+
+        <div class="card">
+            <div class="card-hearder">
+                <ul class="nav nav-pills w-100">
+                    <li class="nav-link big">Category</li>
+                    <li class="nav-link ms-auto ">
+                        <a href="/manage-category/addCat" class="nav-link active link"> 
+                           <br> Add Category  </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body" style="background-color: white;">
+                <% if(data.length) { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">img_url</th>
+                                <th scope="col">Category</th>
+                                <th width="200px">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < data.length; i++) { %>
+                                <tr>
+                                    <th scope="row"><%= data[i].category_ID %></th>
+                                    <td><%= data[i].img_url %></td>
+                                    <td><%= data[i].category_type %></td>
+                                    <td>
+                                        <a href="../manage-category/editCat/<%= data[i].category_ID %>" class="btn btn-success edit">Edit</a>
+                                        <a href="../manage-category/delete/<%= data[i].category_ID %>" onclick="return alert('Are you sure?')" class="btn btn-danger delete">Delete</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                <% } %>
+
+                <!-- if result is empty -->
+                <% if(!data.length) { %>
+                    <p class="text-center">No book found!</p>
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

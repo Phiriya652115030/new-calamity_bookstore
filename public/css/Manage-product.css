@@ -113,3 +113,10 @@ td {
     align-items: center;
     justify-content: center;
 }
+.link{
+    height: 70px;
+    padding: 50px;
+}
+.big {
+    font-size: 2.5rem;
+}
