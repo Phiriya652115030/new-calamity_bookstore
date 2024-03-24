@@ -15,7 +15,7 @@ let session = require('express-session');
 let db = require('./config/db')
 
 var booksRouter = require('./routes/books');
-
+var CategoryRouter = require('./routes/category');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +40,7 @@ app.use(flash());
 
 
 app.use('/manage-product', booksRouter);
+app.use('/manage-category',  CategoryRouter);
 
 // // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -147,68 +148,48 @@ app.get('/lang', async (req, res) => {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//go to add-category
-app.get('/add-category', (req, res) => {
-    res.render('admin/add_category', {name:'Add'});
-});
-
-//go to edit-category
-app.get('/edit-category', (req, res) => {
-    res.render('admin/edit_category', {name:'Edit'});
-});
-
-//go to manage-category
-app.get('/manage-category', (req, res) => {
-    res.render('admin/manage_category');
-});
-//go to add-product
-app.get('/add-product', (req, res) => {
-    res.render('admin/add_product', {name:'Add'});
-});
-
-//go to edit-product
-app.get('/edit-product', (req, res) => {
-    res.render('admin/edit_product');
-});
 //go to manage-product
-app.get('/manage-product', (req, res) => {
-    res.render('admin/manage_product');
-    
+app.get('/views/manage-category', (req, res) => {
+    res.render('/manage_category/indexCat');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //go to top-product
 app.get('/top-product', (req, res) => {

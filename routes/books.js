@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
             req.flash('error', err);
             res.render('manage-product', { data: '' });
         } else {
-            res.render('manage-product', { data: rows })
+            res.render('manage-product/index', { data: rows })
             
         }
     })
