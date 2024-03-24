@@ -12,7 +12,7 @@
         <div class="alert alert-danger" role="alert"><%= messages.error%></div>
     <% } %>
 
-    <a href="/books" class="btn btn-info">Back</a>
+    <a href="/manage-product" class="btn btn-info">Back</a>
     <br><br>
 
     <div class="card">
@@ -20,7 +20,7 @@
             Add book 
         </div>
         <div class="card-body">
-            <form action="/books/add" method="post">
+            <form action="/manage-product/add" method="post">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" name="product_name" value="<%= product_name %>" autocomplete="off">

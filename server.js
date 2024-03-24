@@ -302,7 +302,7 @@ app.get('/contact', (req, res) => {
 });
 
 //go to home
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     res.render('user/home');
 });
 
