@@ -23,7 +23,7 @@ const db = mysql.createConnection({
     host: "127.0.0.1",
     user: "root",
     password: "Tun-48449",
-    database: "fe_book"
+    database: "data-book"
 });
 
 // Connect to MySQL
@@ -51,10 +51,24 @@ function fetchProducts() {
     });
 }
 
+// Function to fetch Allproducts
+function fetchCategory() {
+    db.query('SELECT * FROM category', (err, results) => {
+        if (err) {
+            console.error('Error fetching category:', err);
+            return;
+        }
+        /*console.log('Products:', results);*/
+        // Pass products to render
+        app.locals.category = results;
+    });
+}
+
 //render home page
 app.get('/', (req, res) => {
-    res.render('user/home', { product : app.locals.products });
+    res.render('user/home');
 });
+
 
 //add category
 app.post('/book/add', (req, res) => {
@@ -90,6 +104,28 @@ function fetchCategory() {
     });
 }
 
+//go to comics
+app.get('/comics', (req, res) => {
+    res.render('user/comics');
+});
+
+//go to fiction
+app.get('/fiction', (req, res) => {
+    res.render('user/fiction' );
+});
+
+//go to languages
+app.get('/lang', (req, res) => {
+    res.render('user/languages');
+});
+
+//go to all-category
+app.get('/all-category', (req, res) => {
+    res.render('user/all_category');
+});
+
+
+
 
 //go to add-category
 app.get('/add-category', (req, res) => {
@@ -107,21 +143,6 @@ app.get("/delete_category" ,(req,res) => {
 
     
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -199,13 +220,12 @@ app.get('/wishlist', (req, res) => {
     res.render('user/my_wishlist');
 });
 
-<<<<<<< Updated upstream
-=======
+
 app.get('/test', (req, res) => {
     res.render('user/test');
 });
 
->>>>>>> Stashed changes
+
 //go to track-order
 app.get('/track-order', (req, res) => {
     res.render('user/track_order');
@@ -221,20 +241,14 @@ app.get('/account-info', (req, res) => {
     res.render('user/account_info');
 });
 
-//go to all-category
-app.get('/all-category', (req, res) => {
-    res.render('user/all_category');
-});
+
 
 //go to cart-page
 app.get('/cart', (req, res) => {
     res.render('user/cart_page');
 });
 
-//go to comics
-app.get('/comics', (req, res) => {
-    res.render('user/comics');
-});
+
 
 //go to contact
 app.get('/contact', (req, res) => {
